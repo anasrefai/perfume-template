@@ -1,0 +1,14 @@
+# Claude Code internal skills / config (not part of the template)
+.claude/
+
+# scaffolding / scrape cache
+.firecrawl/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# logs
+*.log

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Sole Whiff</title>
+  <meta name="description" content="At Sole Whiff, perfume is more than a scent — it's an extension of your identity. Discover our story.">
+  <meta name="theme-color" content="#1D4648">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdn.shopify.com">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="about">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">Home</a> / About Us</div>
+        <h1 class="gold-text">About Sole Whiff</h1>
+        <p>An unparalleled olfactory journey, built on elegance, quality and personalized service.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container prose" data-reveal>
+        <p>At Sole Whiff, we believe perfume is more than just a scent — it's an extension of your identity. We curate an exclusive collection of high-end fragrances and offer expert decanting services, allowing you to explore the world's most luxurious aromas without commitment. Our passion lies in helping you discover a fragrance that truly resonates with your unique spirit and style.</p>
+        <p>Founded on principles of elegance, quality and personalized service, Sole Whiff is your gateway to an unparalleled olfactory journey. We partner with prestigious houses and emerging artisan perfumers to bring you a selection that is both diverse and impeccably refined.</p>
+      </div>
+    </section>
+
+    <!-- values -->
+    <section class="section" style="background:var(--bg);border-block:1px solid var(--line);padding-top:0">
+      <div class="container">
+        <div class="tips-grid" style="margin-top:-3rem">
+          <div class="tip-card" data-reveal>
+            <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 3Z"/></svg></div>
+            <h3>100% Authentic</h3>
+            <p>Every drop is sourced from prestigious houses and decanted with sterile precision — an authentic sample of the original masterpiece.</p>
+          </div>
+          <div class="tip-card" data-reveal>
+            <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div>
+            <h3>Curated Selection</h3>
+            <p>From heritage maisons to rare artisan perfumers, our 70+ brands are chosen for character, quality and craftsmanship.</p>
+          </div>
+          <div class="tip-card" data-reveal>
+            <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 13l1.5-6h13L20 13M4 13h16M4 13v5h16v-5M8 18v2M16 18v2"/></svg></div>
+            <h3>Fast Delivery</h3>
+            <p>Based in Aqaba with fast delivery to Amman and every city across Jordan, so your scent journey begins without delay.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- gallery -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow center">Scent Inspirations</span>
+          <h2 class="gold-text">A Glimpse Into Our World</h2>
+        </div>
+        <div class="about-gallery stagger" data-reveal id="aboutGallery"></div>
+      </div>
+    </section>
+
+    <section class="request">
+      <div class="container" data-reveal>
+        <span class="eyebrow center">Perfume Hunters</span>
+        <h2 class="gold-text">Ready to find your signature?</h2>
+        <p>Let our perfume hunters track down your desired fragrance, or explore the collection yourself.</p>
+        <a href="shop.html" class="btn btn-solid">Explore Collection <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    window.renderPage = function () {
+      const g = [
+        "69e0b641-daf1-442a-b6cd-a15c62d70af5_800x.jpg?v=1761563976",
+        "WhatsApp_Image_2025-10-28_at_08.48.45_1_800x.jpg?v=1761630734",
+        "WhatsApp_Image_2025-10-28_at_08.48.45_2_800x.jpg?v=1761630735",
+        "WhatsApp_Image_2025-10-28_at_08.48.45_3_800x.jpg?v=1761630735",
+        "WhatsApp_Image_2025-10-28_at_08.48.45_800x.jpg?v=1761630734",
+        "WhatsApp_Image_2025-10-28_at_08.48.46_1_800x.jpg?v=1761630734",
+        "WhatsApp_Image_2025-10-28_at_08.48.46_2_800x.jpg?v=1761630734",
+        "decant11.png?v=1769890976"
+      ];
+      document.getElementById("aboutGallery").innerHTML = g.map(f =>
+        `<img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/${f}&width=500" alt="Scent inspiration" loading="lazy">`).join("");
+      swReveal();
+    };
+  </script>
+</body>
+</html>

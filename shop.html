@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All Fragrances — Sole Whiff</title>
+  <meta name="description" content="Explore 240+ niche fragrances from 70+ prestigious houses. Filter by best sellers, new arrivals and more.">
+  <meta name="theme-color" content="#1D4648">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdn.shopify.com">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="brands">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">Home</a> / Shop</div>
+        <h1 class="gold-text">Explore All Products</h1>
+        <p>A curated house of the world's finest niche fragrances — available as full bottles and precise decants.</p>
+      </div>
+    </section>
+
+    <section class="shop-layout">
+      <div class="container">
+        <div class="shop-toolbar">
+          <div class="filter-pills" id="filterPills">
+            <button class="pill active" data-filter="all">All Products</button>
+            <button class="pill" data-filter="best">Best Sellers</button>
+            <button class="pill" data-filter="new">New Arrivals</button>
+            <button class="pill" data-filter="coming">Coming Soon</button>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:center">
+            <span class="shop-count" id="shopCount"></span>
+            <select class="shop-select" id="sortSel" aria-label="Sort products">
+              <option value="feat">Featured</option>
+              <option value="az">Name: A–Z</option>
+              <option value="lo">Price: Low to High</option>
+              <option value="hi">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid" id="shopGrid"></div>
+        <div class="load-more">
+          <button class="btn" id="loadMore">Load More <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    window.renderPage = function () {
+      const grid = document.getElementById("shopGrid");
+      const countEl = document.getElementById("shopCount");
+      const loadBtn = document.getElementById("loadMore");
+      const PAGE = 16;
+      let filter = new URLSearchParams(location.search).get("f") || "all";
+      let sort = "feat";
+      let shown = PAGE;
+
+      const tagFor = { best: "Best Seller", new: "New Arrival", coming: "Coming Soon" };
+
+      function list() {
+        let items = PRODUCTS.slice();
+        if (filter !== "all") items = items.filter(p => p.tag === tagFor[filter]);
+        if (sort === "az") items.sort((a, b) => a.name.localeCompare(b.name));
+        else if (sort === "lo") items.sort((a, b) => (a.low ?? 1e9) - (b.low ?? 1e9));
+        else if (sort === "hi") items.sort((a, b) => (b.high ?? 0) - (a.high ?? 0));
+        return items;
+      }
+
+      function draw() {
+        const items = list();
+        const slice = items.slice(0, shown);
+        grid.innerHTML = slice.map(p => cardHtml(p)).join("");
+        countEl.textContent = items.length + " product(s) found";
+        loadBtn.parentElement.style.display = shown >= items.length ? "none" : "block";
+        bindWish(grid);
+        swReveal();
+      }
+
+      // set active pill from query
+      document.querySelectorAll("#filterPills .pill").forEach(b => {
+        b.classList.toggle("active", b.dataset.filter === filter);
+        b.addEventListener("click", () => {
+          document.querySelector("#filterPills .active")?.classList.remove("active");
+          b.classList.add("active");
+          filter = b.dataset.filter; shown = PAGE; draw();
+          window.scrollTo({ top: document.querySelector(".shop-layout").offsetTop - 90, behavior: "smooth" });
+        });
+      });
+      document.getElementById("sortSel").addEventListener("change", e => { sort = e.target.value; shown = PAGE; draw(); });
+      loadBtn.addEventListener("click", () => { shown += PAGE; draw(); });
+
+      draw();
+    };
+  </script>
+</body>
+</html>
