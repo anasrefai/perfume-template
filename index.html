@@ -6,244 +6,420 @@
   <title>Sole Whiff — Redefining Your Perfumes</title>
   <meta name="description" content="Discover luxury niche perfumes in Jordan. Premium long-lasting fragrances and precise decants, delivered across Jordan.">
   <meta name="theme-color" content="#1D4648">
+
+  <!-- Fonts (match live: Playfair Display + Poppins + Tajawal) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Icons (match live: Font Awesome 6.5.1) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="preconnect" href="https://cdn.shopify.com">
-  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Tailwind Play CDN + brand config mirrored from live build -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg: '#1D4648',      // rgb(29 70 72)  — deep teal
+              dark: '#163536',    // rgb(22 53 54)  — near-black teal
+              accent: '#f0d2a0',  // gold / champagne
+              text: '#d4ba88',    // muted gold body text
+              card: 'rgba(0,0,0,0.2)'
+            }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #163536; color: rgba(212,186,136,.9); font-family: Poppins, sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    ::selection { background: #f0d2a0; color: #163536; }
+
+    /* frosted product-card surface (live `.glass`) */
+    .glass { background: rgba(255,255,255,.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+    /* live keyframes */
+    @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+    .animate-slide-up { animation: slideUp .8s cubic-bezier(.22,1,.36,1) forwards; }
+    @keyframes flash { 0%,100% { opacity: 1; } 50% { opacity: .2; } }
+    .animate-flash { animation: flash 1s ease-in-out infinite; }
+    @keyframes textFlash { 0%,100% { opacity: 1; } 50% { opacity: .5; } }
+    .animate-text-flash { animation: textFlash 1.5s ease-in-out infinite; }
+    @keyframes pulseGlow { 0%,100% { opacity: .4; } 50% { opacity: .8; } }
+    .animate-pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+
+    /* scroll reveal */
+    .scroll-animate { opacity: 0; transform: translateY(40px); transition: opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); }
+    .scroll-animate.visible { opacity: 1; transform: none; }
+
+    /* marquee (new arrivals + scent inspirations) */
+    .marquee-track { display: flex; width: max-content; animation: marquee var(--dur,45s) linear infinite; }
+    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* hide scrollbars on horizontal carousels */
+    .no-sb::-webkit-scrollbar { display: none; }
+    .no-sb { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* gold thin scrollbar */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #163536; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(#f0d2a0,#1D4648); border-radius: 20px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+      .scroll-animate { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
 </head>
-<body data-page="home">
-  <div id="site-header"></div>
-  <main>
-    <!-- ============ HERO SLIDER ============ -->
-    <section class="hero" aria-label="Featured collections">
-      <div class="hero-slide active">
-        <img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/slide1_1200x.png?v=1777634627&width=1600" alt="Rare Essence">
-        <div class="hero-inner">
-          <div class="hero-eyebrow"><span class="eyebrow center">Sole Whiff Collection</span></div>
-          <h1><span class="gold-text">Rare Essence</span></h1>
-          <div class="hero-cta"><a href="shop.html" class="btn">Explore Products <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-        </div>
-      </div>
-      <div class="hero-slide">
-        <img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/slide2_1200x.png?v=1777634682&width=1600" alt="Timeless Elegance">
-        <div class="hero-inner">
-          <div class="hero-eyebrow"><span class="eyebrow center">Sole Whiff Collection</span></div>
-          <h1><span class="gold-text">Timeless Elegance</span></h1>
-          <div class="hero-cta"><a href="shop.html" class="btn">Explore Products <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-        </div>
-      </div>
-      <div class="hero-slide">
-        <img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/slide3_1200x.png?v=1777634749&width=1600" alt="Ultimate Luxury">
-        <div class="hero-inner">
-          <div class="hero-eyebrow"><span class="eyebrow center">Sole Whiff Collection</span></div>
-          <h1><span class="gold-text">Ultimate Luxury</span></h1>
-          <div class="hero-cta"><a href="shop.html" class="btn">Explore Products <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-        </div>
-      </div>
-      <button class="hero-arrow prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 6l-6 6 6 6"/></svg></button>
-      <button class="hero-arrow next" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg></button>
-      <div class="hero-dots">
-        <button class="active" aria-label="Slide 1"></button>
-        <button aria-label="Slide 2"></button>
-        <button aria-label="Slide 3"></button>
-      </div>
-      <span class="scroll-cue">Scroll</span>
-    </section>
 
-    <!-- ============ BEST SELLERS ============ -->
-    <section class="section">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <span class="eyebrow center">Our Best Sellers</span>
-          <h2 class="gold-text">Curated Favorites</h2>
-          <p>Customer favorites, curated for you.</p>
-        </div>
-        <div class="grid" id="bestGrid"></div>
-        <div class="center-cta" data-reveal>
-          <a href="shop.html?f=best" class="btn">View All Best Sellers <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-    </section>
+<body class="font-sans bg-brand-dark text-brand-text/90">
 
-    <!-- ============ QUOTE BAND ============ -->
-    <section class="quote-band">
-      <div class="container" data-reveal>
-        <span class="eyebrow center">Our Customers' Feedback</span>
-        <h2 class="gold-text" style="margin:1.2rem 0 .6rem">Design that captivates</h2>
-        <p class="sub">Today &amp; Inspires Tomorrow</p>
-      </div>
-    </section>
+  <!-- ============================ HEADER ============================ -->
+  <header id="hdr" class="fixed bg-transparent border-none py-4 w-full top-0 z-[100] transition-all duration-500">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="flex items-center justify-between h-20 md:h-24 relative">
 
-    <!-- ============ NEW ARRIVALS ============ -->
-    <section class="section">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <span class="eyebrow center">Just Landed</span>
-          <h2 class="gold-text">New Arrivals</h2>
-          <p>Our latest additions, just for you.</p>
+        <!-- mobile left icons -->
+        <div class="md:hidden flex items-center gap-1">
+          <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/5 text-brand-accent transition-all active:scale-90" aria-label="My Account"><i class="far fa-user text-sm"></i></a>
+          <a href="#" class="relative w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/5 text-brand-accent transition-all active:scale-90" aria-label="Cart"><i class="fas fa-shopping-bag text-sm"></i></a>
         </div>
-        <div class="grid" id="newGrid"></div>
-        <div class="center-cta" data-reveal>
-          <a href="shop.html?f=new" class="btn">See All New Arrivals <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-    </section>
 
-    <!-- ============ PURE DECANTS ============ -->
-    <section class="section decants">
-      <div class="container">
-        <div class="decants-grid stagger" data-reveal>
-          <div class="decant-tile"><img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/decant11.png?v=1769890976&width=800" alt="Fragrance decant display" loading="lazy"></div>
-          <div class="decant-tile"><img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/decant13.png?v=1769893670&width=800" alt="Fragrance decant display" loading="lazy"></div>
-          <div class="decant-tile"><img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/decant12.png?v=1769893670&width=800" alt="Fragrance decant display" loading="lazy"></div>
-          <div class="decant-tile"><img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/decant14.png?v=1769894241&width=800" alt="Fragrance decant display" loading="lazy"></div>
+        <!-- logo (centered on mobile) -->
+        <div class="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
+          <a href="index.html" aria-label="Sole Whiff home">
+            <img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/LOGO5.png?v=1766602502" alt="Sole Whiff" class="h-14 md:h-16 w-auto">
+          </a>
         </div>
-        <div class="section-head" data-reveal style="margin-bottom:0">
-          <span class="eyebrow center">10–15 Sprays Per ml</span>
-          <h2 class="gold-text">Pure Decants</h2>
-          <div class="center-cta" style="margin-top:1.8rem"><a href="shop.html" class="btn">Explore The Art <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ============ NICHE BANNER ============ -->
-    <section class="niche-banner">
-      <div class="bg"><img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/slide3_1200x.png?v=1777634749&width=1600" alt=""></div>
-      <div class="inner" data-reveal>
-        <span class="eyebrow center">Sole Whiff</span>
-        <h2 class="gold-text" style="margin-top:1rem">Discover Your Niche Scent</h2>
-        <a href="shop.html" class="btn btn-solid">Explore Collection <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
-    </section>
+        <!-- desktop nav -->
+        <nav class="hidden md:block absolute left-1/2 -translate-x-1/2">
+          <ul class="flex items-center gap-8">
+            <li class="relative group"><a href="index.html" class="text-sm font-semibold tracking-wide text-brand-accent transition-colors duration-300 py-2 relative">Home<span class="absolute bottom-0 left-0 w-full h-0.5 bg-brand-accent transition-all duration-300"></span></a></li>
+            <li class="relative group"><a href="about.html" class="text-sm font-semibold tracking-wide text-brand-text/80 hover:text-brand-accent transition-colors duration-300 py-2 relative">About Us<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span></a></li>
+            <li class="relative group"><a href="shop.html" class="text-sm font-semibold tracking-wide text-brand-text/80 hover:text-brand-accent transition-colors duration-300 py-2 relative">Brands<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span></a></li>
+            <li class="relative group"><a href="tips.html" class="text-sm font-semibold tracking-wide text-brand-text/80 hover:text-brand-accent transition-colors duration-300 py-2 relative">Tips<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span></a></li>
+            <li class="relative group"><a href="contact.html" class="text-sm font-semibold tracking-wide text-brand-text/80 hover:text-brand-accent transition-colors duration-300 py-2 relative">Contact Us<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span></a></li>
+          </ul>
+        </nav>
 
-    <!-- ============ COMING SOON ============ -->
-    <section class="section">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <span class="eyebrow center">Coming Soon</span>
-          <h2 class="gold-text">The Future of Niche</h2>
-          <p>Get ready for our next wave of signature scents.</p>
+        <!-- desktop right icons -->
+        <div class="hidden md:flex items-center gap-5 ml-auto">
+          <button class="w-9 h-9 flex items-center justify-center rounded-full text-brand-accent hover:bg-white/5 transition-all active:scale-90" aria-label="Search"><i class="fas fa-magnifying-glass text-sm"></i></button>
+          <button class="text-xs font-bold tracking-wider text-brand-accent border border-brand-accent/40 rounded-full px-2.5 py-1 hover:bg-brand-accent hover:text-brand-bg transition-all" aria-label="Switch to Arabic">AR</button>
+          <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full text-brand-accent hover:bg-white/5 transition-all active:scale-90" aria-label="Account"><i class="far fa-user text-sm"></i></a>
+          <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full text-brand-accent hover:bg-white/5 transition-all active:scale-90" aria-label="Wishlist"><i class="far fa-heart text-sm"></i></a>
+          <a href="#" class="relative w-9 h-9 flex items-center justify-center rounded-full text-brand-accent hover:bg-white/5 transition-all active:scale-90" aria-label="Cart"><i class="fas fa-shopping-bag text-sm"></i></a>
         </div>
-        <div class="grid" id="comingGrid"></div>
-      </div>
-    </section>
 
-    <!-- ============ BRANDS ============ -->
-    <section class="section" style="background:var(--bg);border-block:1px solid var(--line)">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <span class="eyebrow center">70+ Houses</span>
-          <h2 class="gold-text">Our Prestigious Brand Collection</h2>
-          <p>From heritage maisons to artisan perfumers.</p>
-        </div>
-        <div class="brand-grid" id="brandGrid"></div>
-        <div class="center-cta" data-reveal>
-          <a href="shop.html" class="btn">All Brands <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
+        <!-- mobile hamburger -->
+        <button id="burger" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full text-brand-accent hover:bg-white/5 transition-all active:scale-90 ml-auto" aria-label="Open menu"><i class="fas fa-bars"></i></button>
       </div>
-    </section>
+    </div>
+  </header>
 
-    <!-- ============ WHAT IS DECANTING ============ -->
-    <section class="section">
-      <div class="container split">
-        <div class="split-media" data-reveal>
-          <img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/e167c965-c3fe-45dd-aa3e-17ead8e0c713.jpg?v=1766608056&width=900" alt="A luxurious perfume bottle next to a smaller decant vial" loading="lazy">
-        </div>
-        <div class="split-body" data-reveal>
-          <span class="eyebrow">The Craft</span>
-          <h2 class="gold-text">What is Decanting?</h2>
-          <p>Decanting is the art of transferring perfume from its original bottle into a smaller vial. This lets you explore a wide variety of high-end fragrances affordably, test scents on your skin before committing to a full bottle, and carry your favorite aromas anywhere. At Sole Whiff, we use precise, sterile techniques to ensure every decant is a perfect, authentic sample of the original masterpiece.</p>
-          <a href="tips.html" class="btn">Read Our Tips <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-    </section>
+  <!-- mobile drawer -->
+  <div id="drawerBd" class="fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm opacity-0 invisible transition-all duration-400"></div>
+  <aside id="drawer" class="fixed top-0 right-0 z-[120] h-[100dvh] w-[84vw] max-w-sm bg-brand-dark border-l border-brand-accent/20 p-6 translate-x-full transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] flex flex-col">
+    <div class="flex items-center justify-between mb-10">
+      <img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/LOGO5.png?v=1766602502" alt="Sole Whiff" class="h-12">
+      <button id="drawerClose" class="w-10 h-10 grid place-items-center rounded-full text-brand-accent hover:bg-white/5" aria-label="Close menu"><i class="fas fa-xmark text-lg"></i></button>
+    </div>
+    <nav class="flex flex-col">
+      <a href="index.html" class="font-serif text-2xl text-white py-3 border-b border-white/10 hover:text-brand-accent hover:pl-2 transition-all">Home</a>
+      <a href="about.html" class="font-serif text-2xl text-white py-3 border-b border-white/10 hover:text-brand-accent hover:pl-2 transition-all">About Us</a>
+      <a href="shop.html" class="font-serif text-2xl text-white py-3 border-b border-white/10 hover:text-brand-accent hover:pl-2 transition-all">Brands</a>
+      <a href="tips.html" class="font-serif text-2xl text-white py-3 border-b border-white/10 hover:text-brand-accent hover:pl-2 transition-all">Tips</a>
+      <a href="contact.html" class="font-serif text-2xl text-white py-3 border-b border-white/10 hover:text-brand-accent hover:pl-2 transition-all">Contact Us</a>
+    </nav>
+    <div class="mt-auto flex items-center gap-5 text-brand-accent text-xl">
+      <a href="https://www.instagram.com/sole.whiff/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/962795634234" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <span class="ml-auto text-sm font-bold">AR</span>
+    </div>
+  </aside>
 
-    <!-- ============ TESTIMONIALS ============ -->
-    <section class="section testi" id="testi">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <span class="eyebrow center">Loved by Fragrance Enthusiasts</span>
-          <h2 class="gold-text">From Our Community</h2>
-          <p>Real experiences from our valued community.</p>
-        </div>
-        <div class="testi-viewport" data-reveal>
-          <div class="testi-track">
-            <div class="testi-slide">
-              <div class="stars">★★★★★</div>
-              <p class="testi-quote">Amazing perfume, delivered very fast. The decant bottle is very good and the price is the best in the market — especially with these original products.</p>
-              <div class="testi-name">Abdulsalam T.</div>
-              <div class="testi-date">March 31, 2026</div>
-            </div>
-            <div class="testi-slide">
-              <div class="stars">★★★★★</div>
-              <p class="testi-quote">The perfumes are original and absolutely amazing. I'm obsessed with this website! The customer service is excellent. Wishing you continued success ❤️</p>
-              <div class="testi-name">Lees Dizayee</div>
-              <div class="testi-date">April 14, 2026</div>
-            </div>
-            <div class="testi-slide">
-              <div class="stars">★★★★★</div>
-              <p class="testi-quote">Blanche Bête — wow. The quality, the packaging, the scent throw. Everything about this order exceeded my expectations. 😍👌</p>
-              <div class="testi-name">Lees Dizayee</div>
-              <div class="testi-date">April 14, 2026</div>
+  <main class="px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+
+    <!-- ============================ HERO SLIDER ============================ -->
+    <section id="hero" class="relative h-[100vh] bg-brand-dark overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
+      <div class="absolute inset-0 w-full h-full">
+        <!-- slides -->
+        <div class="hero-slide absolute inset-0 opacity-100 transition-[opacity,transform] duration-[2000ms] ease-[cubic-bezier(.4,0,.2,1)]" data-i="0">
+          <div class="absolute inset-0 bg-black/30 z-10 pointer-events-none"></div>
+          <img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/slide1_1200x.png?v=1777634627&width=1600" alt="Rare Essence" class="w-full h-full object-cover" loading="eager">
+          <div class="absolute inset-0 z-40 flex flex-col items-center justify-center px-6">
+            <div class="text-center">
+              <h2 class="text-4xl md:text-7xl font-serif font-light text-brand-accent tracking-[0.2em] uppercase mb-10 md:mb-12 [text-shadow:0_10px_30px_rgba(0,0,0,0.5)]">Rare Essence</h2>
+              <div class="pointer-events-auto mt-8">
+                <a href="shop.html" class="group relative inline-flex items-center justify-center px-10 md:px-16 py-4 md:py-5 bg-transparent border border-brand-accent text-brand-accent font-light text-sm tracking-[0.3em] uppercase transition-all duration-500 hover:bg-brand-accent hover:text-brand-bg" aria-label="Explore Products">
+                  <span class="relative z-10 flex items-center gap-3">Explore Products<i class="fas fa-arrow-right-long text-xs transition-transform duration-300 group-hover:translate-x-2"></i></span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="testi-nav">
-          <button id="testiPrev" aria-label="Previous testimonial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 6l-6 6 6 6"/></svg></button>
-          <button id="testiNext" aria-label="Next testimonial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="hero-slide absolute inset-0 opacity-0 transition-[opacity,transform] duration-[2000ms] ease-[cubic-bezier(.4,0,.2,1)]" data-i="1">
+          <div class="absolute inset-0 bg-black/30 z-10 pointer-events-none"></div>
+          <img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/slide2_1200x.png?v=1777634682&width=1600" alt="Timeless Elegance" class="w-full h-full object-cover" loading="lazy">
+          <div class="absolute inset-0 z-40 flex flex-col items-center justify-center px-6">
+            <div class="text-center">
+              <h2 class="text-4xl md:text-7xl font-serif font-light text-brand-accent tracking-[0.2em] uppercase mb-10 md:mb-12 [text-shadow:0_10px_30px_rgba(0,0,0,0.5)]">Timeless Elegance</h2>
+              <div class="pointer-events-auto mt-8">
+                <a href="shop.html" class="group relative inline-flex items-center justify-center px-10 md:px-16 py-4 md:py-5 bg-transparent border border-brand-accent text-brand-accent font-light text-sm tracking-[0.3em] uppercase transition-all duration-500 hover:bg-brand-accent hover:text-brand-bg" aria-label="Explore Products">
+                  <span class="relative z-10 flex items-center gap-3">Explore Products<i class="fas fa-arrow-right-long text-xs transition-transform duration-300 group-hover:translate-x-2"></i></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-slide absolute inset-0 opacity-0 transition-[opacity,transform] duration-[2000ms] ease-[cubic-bezier(.4,0,.2,1)]" data-i="2">
+          <div class="absolute inset-0 bg-black/30 z-10 pointer-events-none"></div>
+          <img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/slide3_1200x.png?v=1777634749&width=1600" alt="Ultimate Luxury" class="w-full h-full object-cover" loading="lazy">
+          <div class="absolute inset-0 z-40 flex flex-col items-center justify-center px-6">
+            <div class="text-center">
+              <h2 class="text-4xl md:text-7xl font-serif font-light text-brand-accent tracking-[0.2em] uppercase mb-10 md:mb-12 [text-shadow:0_10px_30px_rgba(0,0,0,0.5)]">Ultimate Luxury</h2>
+              <div class="pointer-events-auto mt-8">
+                <a href="shop.html" class="group relative inline-flex items-center justify-center px-10 md:px-16 py-4 md:py-5 bg-transparent border border-brand-accent text-brand-accent font-light text-sm tracking-[0.3em] uppercase transition-all duration-500 hover:bg-brand-accent hover:text-brand-bg" aria-label="Explore Products">
+                  <span class="relative z-10 flex items-center gap-3">Explore Products<i class="fas fa-arrow-right-long text-xs transition-transform duration-300 group-hover:translate-x-2"></i></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- arrows -->
+      <button id="heroPrev" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 grid place-items-center rounded-full border border-brand-accent/40 text-brand-accent bg-black/20 backdrop-blur-sm hover:bg-brand-accent hover:text-brand-bg transition-all duration-300" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+      <button id="heroNext" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 grid place-items-center rounded-full border border-brand-accent/40 text-brand-accent bg-black/20 backdrop-blur-sm hover:bg-brand-accent hover:text-brand-bg transition-all duration-300" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+      <!-- dots -->
+      <div id="heroDots" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 flex gap-3"></div>
+    </section>
+
+    <!-- ============================ BEST SELLERS ============================ -->
+    <section id="best" class="py-20 md:py-32 relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-dark via-brand-bg/20 to-brand-dark pointer-events-none"></div>
+      <div class="container mx-auto relative z-10">
+        <div class="text-center mb-16 scroll-animate">
+          <span class="text-brand-accent text-[10px] md:text-xs font-black uppercase tracking-[0.6em] mb-4 block animate-pulse">Our Best Sellers</span>
+          <h2 class="text-4xl md:text-7xl font-serif font-bold text-white mb-6 leading-none tracking-tight">Curated <span class="text-brand-accent italic font-light">Favorites</span></h2>
+          <div class="h-px w-24 bg-brand-accent/60 mx-auto mb-6"></div>
+          <p class="text-lg text-brand-text/80">Customer favorites, curated for you.</p>
+        </div>
+        <div id="bestGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"></div>
+        <div class="text-center mt-16 scroll-animate">
+          <a href="shop.html?f=best" class="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-serif font-bold text-white transition-all duration-300 bg-transparent border border-brand-accent/30 rounded-full hover:bg-brand-accent/10 hover:border-brand-accent hover:shadow-[0_0_30px_rgba(240,210,160,0.2)]">
+            <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-brand-accent rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+            <span class="relative flex items-center gap-3 tracking-widest uppercase text-xs">View All Best Sellers<i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i></span>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- ============ REQUEST CTA ============ -->
-    <section class="request">
-      <div class="container" data-reveal>
-        <span class="eyebrow center">Perfume Hunters</span>
-        <h2 class="gold-text">Didn't find your niche perfume?</h2>
-        <p>Our perfume hunters are ready to track down your desired fragrance. Let us know what you're looking for!</p>
-        <a href="contact.html" class="btn btn-solid">Request a Perfume <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <!-- ============================ "DESIGN THAT CAPTIVATES" BANNER ============================ -->
+    <section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
+      <div class="absolute inset-0 w-full h-full">
+        <div class="absolute inset-0 bg-center bg-cover" style="background-image:url('https://cdn.shopify.com/s/files/1/0979/7206/0241/files/design5.png?v=1769823425');"></div>
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-brand-dark/40 z-10"></div>
+      <div class="relative z-20 text-center px-6 max-w-5xl mx-auto scroll-animate">
+        <h2 class="text-5xl md:text-8xl font-serif font-bold text-white leading-tight drop-shadow-2xl mb-8 opacity-90">Design that captivates</h2>
+        <p class="text-xl md:text-3xl text-brand-text font-light tracking-[0.4em] uppercase opacity-80 mb-12">Today &amp; Inspires Tomorrow</p>
+        <a href="#testimonials" class="inline-flex items-center gap-3 bg-brand-accent text-brand-bg font-bold text-sm md:text-base px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-brand-text hover:-translate-y-1 tracking-widest uppercase">Our Customers Feedback<i class="fas fa-arrow-down text-xs"></i></a>
+      </div>
+    </section>
+
+    <!-- ============================ NEW ARRIVALS (marquee) ============================ -->
+    <section id="new" class="py-20 md:py-32">
+      <div class="container mx-auto">
+        <div class="text-center mb-16 scroll-animate">
+          <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-accent animate-text-flash">New Arrivals</h2>
+          <p class="text-lg text-brand-text/80 mt-4">Our latest additions, just for you.</p>
+        </div>
+      </div>
+      <div class="marquee-wrap relative overflow-hidden" style="--dur:60s">
+        <div id="newTrack" class="marquee-track gap-6 md:gap-8 px-4"></div>
+      </div>
+      <div class="container mx-auto">
+        <div class="text-center mt-16 scroll-animate">
+          <a href="shop.html?f=new" class="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-serif font-bold text-white transition-all duration-300 bg-transparent border border-brand-accent/30 rounded-full hover:bg-brand-accent/10 hover:border-brand-accent hover:shadow-[0_0_30px_rgba(240,210,160,0.2)]">
+            <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-brand-accent rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+            <span class="relative flex items-center gap-3 tracking-widest uppercase text-xs">See All New Arrivals<i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ PURE DECANTS (image banner) ============================ -->
+    <section class="relative h-[90vh] overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
+      <div id="decantSlides" class="absolute inset-0 w-full h-full"></div>
+      <div class="absolute inset-0 bg-black/40 z-10"></div>
+      <div class="absolute inset-0 z-20 flex flex-col items-center justify-center pb-24 md:pb-40 pointer-events-none">
+        <h2 class="text-5xl md:text-8xl font-serif font-bold text-brand-accent leading-none tracking-tight uppercase [text-shadow:0_10px_30px_rgba(0,0,0,0.5)] mb-2 md:mb-4 animate-slide-up">Pure Decants</h2>
+        <p class="text-lg md:text-2xl font-bold text-brand-accent tracking-[0.3em] uppercase mb-8 md:mb-12 animate-flash [text-shadow:0_5px_15px_rgba(0,0,0,0.4)]">10-15 sprays per ml</p>
+        <div class="pointer-events-auto">
+          <a href="shop.html" class="group relative inline-flex items-center justify-center px-12 py-5 bg-black/30 backdrop-blur-md border-2 border-brand-accent/30 text-brand-accent font-bold text-xl rounded-full shadow-2xl transition-all duration-500 hover:border-brand-accent hover:bg-brand-accent/20 hover:-translate-y-2" aria-label="Explore The Art">
+            <span class="relative z-10 flex items-center gap-3">Explore The Art<i class="fas fa-arrow-down-long text-sm transition-transform duration-300 group-hover:translate-y-1"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ NICHE HERO ("Discover Your Niche Scent") ============================ -->
+    <section id="niche" class="relative min-h-screen md:min-h-[120vh] flex items-center justify-center overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8 bg-brand-dark">
+      <div class="absolute inset-0 w-full h-full bg-center bg-cover" style="background-image:url('https://cdn.shopify.com/s/files/1/0979/7206/0241/files/h1.png?v=1769902909');"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-brand-dark/20 z-10"></div>
+      <div class="absolute top-1/4 left-10 w-64 h-64 bg-brand-accent/5 rounded-full blur-[100px] animate-pulse-glow z-10"></div>
+      <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-brand-accent/10 rounded-full blur-[120px] animate-pulse-glow z-10" style="animation-delay:1s"></div>
+      <!-- top/bottom fade into brand-dark -->
+      <div class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-brand-dark to-transparent z-30 pointer-events-none"></div>
+      <div class="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-brand-dark to-transparent z-30 pointer-events-none"></div>
+      <div class="relative z-40 w-full max-w-6xl mx-auto text-center px-4">
+        <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-serif font-bold text-brand-accent leading-[1.1] [text-shadow:0_10px_30px_rgba(0,0,0,0.5)]">Discover Your Niche Scent</h1>
+        <div class="mt-12 flex items-center justify-center">
+          <a href="shop.html" class="group relative inline-flex items-center justify-center px-10 py-5 bg-black/30 backdrop-blur-md border-2 border-brand-accent/30 text-brand-accent font-bold text-lg rounded-full shadow-lg transition-all duration-500 hover:border-brand-accent hover:bg-brand-accent/20 hover:-translate-y-2">
+            <span class="relative z-10 flex items-center gap-2">Explore Collection<i class="fas fa-arrow-right-long text-sm transition-transform duration-300 group-hover:translate-x-2"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ COMING SOON ============================ -->
+    <section id="coming" class="py-20 md:py-32">
+      <div class="container mx-auto">
+        <div class="text-center mb-16 scroll-animate">
+          <span class="text-brand-accent text-[10px] md:text-xs font-black uppercase tracking-[0.6em] mb-4 block animate-pulse">Coming Soon</span>
+          <h2 class="text-4xl md:text-7xl font-serif font-bold text-white mb-6 leading-none tracking-tight">The Future <span class="text-brand-accent italic font-light">of Niche</span></h2>
+          <div class="h-px w-24 bg-brand-accent/60 mx-auto mb-6"></div>
+          <p class="text-lg text-brand-text/80">Get ready for our next wave of signature scents.</p>
+        </div>
+        <div id="comingGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8"></div>
+      </div>
+    </section>
+
+    <!-- ============================ BRANDS ============================ -->
+    <section id="brands" class="py-20 md:py-32 bg-brand-dark -mx-4 sm:-mx-6 lg:-mx-8">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 scroll-animate">
+          <h2 class="text-4xl md:text-6xl font-serif font-bold text-white leading-none tracking-tight">Our Prestigious<br>Brand Collection</h2>
+          <a href="shop.html" class="mt-4 md:mt-0 text-brand-accent text-sm tracking-[0.3em] uppercase hover:text-brand-text transition-colors">All Brands</a>
+        </div>
+        <div id="brandGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6"></div>
+        <!-- pagination -->
+        <div class="flex items-center justify-center gap-10 mt-12">
+          <button id="brandPrev" class="text-brand-accent text-sm tracking-[0.2em] uppercase disabled:opacity-30 disabled:cursor-not-allowed hover:text-brand-text transition-colors flex items-center gap-2" aria-label="Previous"><i class="fas fa-arrow-left-long"></i> Previous</button>
+          <div class="flex flex-col items-center">
+            <span class="text-[10px] uppercase tracking-[0.3em] text-brand-text/40 font-bold mb-1">Page</span>
+            <span class="font-serif italic text-2xl text-brand-accent"><span id="brandPage">1</span> <span class="text-sm not-italic text-brand-text/50">/ <span id="brandPages">8</span></span></span>
+          </div>
+          <button id="brandNext" class="text-brand-accent text-sm tracking-[0.2em] uppercase disabled:opacity-30 disabled:cursor-not-allowed hover:text-brand-text transition-colors flex items-center gap-2" aria-label="Next">Next <i class="fas fa-arrow-right-long"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ WHAT IS DECANTING ============================ -->
+    <section id="decanting" class="py-20 md:py-32 bg-brand-bg -mx-4 sm:-mx-6 lg:-mx-8 scroll-animate">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
+        <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-accent mb-12">What is Decanting?</h2>
+        <div class="max-w-xl mx-auto mb-8 rounded-lg overflow-hidden shadow-2xl shadow-brand-dark/50">
+          <img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/e167c965-c3fe-45dd-aa3e-17ead8e0c713.jpg?v=1766608056&width=900" alt="A luxurious perfume bottle next to a smaller decant vial, showing the decanting process." class="w-full h-full object-cover">
+        </div>
+        <p class="text-lg text-brand-text/80 leading-relaxed">Decanting is the art of transferring perfume from its original bottle into a smaller vial. This allows you to explore a wide variety of high-end fragrances affordably, test scents on your skin before committing to a full bottle, and carry your favorite aromas with you anywhere. At Sole Whiff, we use precise, sterile techniques to ensure every decant is a perfect, authentic sample of the original masterpiece.</p>
+      </div>
+    </section>
+
+    <!-- ============================ TESTIMONIALS ============================ -->
+    <section id="testimonials" class="py-20 md:py-32">
+      <div class="container mx-auto">
+        <div class="text-center mb-16 scroll-animate">
+          <h2 class="text-4xl md:text-6xl font-serif font-bold mb-6 py-2 px-4 leading-normal bg-gradient-to-r from-brand-accent via-yellow-200 to-brand-accent bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(240,210,160,0.3)] animate-pulse-glow">Loved by Fragrance Enthusiasts</h2>
+          <p class="text-brand-text/80 max-w-2xl mx-auto text-lg">Real experiences from our valued community.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-accent/20 flex flex-col items-center text-center transition-transform hover:-translate-y-1 duration-300 scroll-animate">
+            <div class="flex space-x-1 mb-6"><i class="fas fa-star text-yellow-400 text-lg"></i><i class="fas fa-star text-yellow-400 text-lg"></i><i class="fas fa-star text-yellow-400 text-lg"></i><i class="fas fa-star text-yellow-400 text-lg"></i><i class="fas fa-star text-yellow-400 text-lg"></i></div>
+            <p class="text-gray-700 italic leading-relaxed mb-6 flex-1">"Amazing Perfume, delivered very fast, the decant bottle is very good and the price is the best in market specially with these original products."</p>
+            <h4 class="font-serif text-lg text-brand-bg font-bold">Abdulsalam T.</h4>
+            <span class="text-gray-400 text-sm mt-1">2026-03-31</span>
+          </div>
+          <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-accent/20 flex flex-col items-center text-center transition-transform hover:-translate-y-1 duration-300 scroll-animate">
+            <div class="flex space-x-1 mb-6"><i class="fas fa-star text-yellow-400 text-lg"></i><i class="fas fa-star text-yellow-400 text-lg"></i><i class="fas fa-star text-yellow-400 text-lg"></i><i class="fas fa-star text-yellow-400 text-lg"></i><i class="fas fa-star text-yellow-400 text-lg"></i></div>
+            <p class="text-gray-700 italic leading-relaxed mb-6 flex-1">"The perfumes are original and absolutely amazing. I'm obsessed with this website! The customer service is excellent. Wishing you continued success ❤️"</p>
+            <h4 class="font-serif text-lg text-brand-bg font-bold">Lees Dizayee</h4>
+            <span class="text-gray-400 text-sm mt-1">2026-04-14</span>
+          </div>
+          <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-accent/20 flex flex-col items-center text-center transition-transform hover:-translate-y-1 duration-300 scroll-animate">
+            <div class="flex space-x-1 mb-6"><i class="fas fa-star text-yellow-400 text-lg"></i><i class="fas fa-star text-yellow-400 text-lg"></i><i class="fas fa-star text-yellow-400 text-lg"></i><i class="fas fa-star text-yellow-400 text-lg"></i><i class="fas fa-star text-yellow-400 text-lg"></i></div>
+            <p class="text-gray-700 italic leading-relaxed mb-6 flex-1">"😍😍😍😍👌👌👌 wow — Blanche Bête. The quality and packaging exceeded my expectations."</p>
+            <h4 class="font-serif text-lg text-brand-bg font-bold">Lees Dizayee</h4>
+            <span class="text-gray-400 text-sm mt-1">2026-04-14</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ REQUEST CTA ============================ -->
+    <section class="py-20 md:py-28 text-center">
+      <div class="container mx-auto max-w-3xl scroll-animate">
+        <h2 class="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Didn't find your niche perfume?</h2>
+        <p class="text-lg text-brand-text/80 mb-10">Our perfume hunters are ready to track down your desired fragrance. Let us know what you're looking for!</p>
+        <a href="https://wa.me/962795634234" class="inline-flex items-center gap-3 bg-brand-accent text-brand-bg font-bold text-lg px-8 py-3 rounded-md shadow-lg transition-all duration-300 hover:bg-brand-text hover:-translate-y-1"><i class="fab fa-whatsapp"></i><span>Request a Perfume</span></a>
       </div>
     </section>
   </main>
 
-  <div id="site-footer"></div>
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="bg-brand-dark text-brand-text/70">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center pt-12">
+        <a href="index.html" class="inline-block mb-6"><img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/LOGO5.png?v=1766602502" alt="Sole Whiff Logo" class="h-16 md:h-28 w-auto mx-auto"></a>
+        <nav class="mb-8">
+          <ul class="flex justify-center flex-wrap gap-x-6 gap-y-2">
+            <li><a href="index.html" class="hover:text-brand-accent transition-colors">Home</a></li>
+            <li><a href="about.html" class="hover:text-brand-accent transition-colors">About Us</a></li>
+            <li><a href="tips.html" class="hover:text-brand-accent transition-colors">Tips</a></li>
+            <li><a href="contact.html" class="hover:text-brand-accent transition-colors">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="flex justify-center space-x-6 mb-10 text-2xl">
+          <a href="https://web.facebook.com/Patchouli.Perfumes.Aqaba/" target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-brand-accent transition-colors"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/sole.whiff/" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-brand-accent transition-colors"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/962795634234" target="_blank" rel="noopener" aria-label="WhatsApp" class="hover:text-brand-accent transition-colors"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <!-- Scent Inspirations marquee -->
+      <div class="border-t border-brand-accent/10 pt-10">
+        <div class="text-center mb-8">
+          <h3 class="text-3xl font-serif text-brand-accent mb-1">Scent Inspirations</h3>
+          <p class="text-brand-text/70">A glimpse into our world of fragrance.</p>
+        </div>
+        <div class="marquee-wrap relative overflow-hidden" style="--dur:50s">
+          <div id="galleryTrack" class="marquee-track gap-4"></div>
+        </div>
+      </div>
+
+      <div class="text-center py-12 space-y-2">
+        <p class="text-sm md:text-base">© 2026 Sole Whiff. All rights reserved.</p>
+        <p class="text-xs md:text-sm text-brand-text/40 italic">designed and developed by <a href="https://www.instagram.com/obsidianstudio.digital?igsh=bWdkbzRhYWp1NDU4" target="_blank" rel="noopener" class="hover:text-brand-accent">Obsidian Studio</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- back to top -->
+  <button id="toTop" class="fixed right-6 bottom-6 z-[90] w-12 h-12 rounded-full bg-brand-accent text-brand-bg grid place-items-center shadow-lg opacity-0 invisible translate-y-3 transition-all duration-400 hover:-translate-y-1" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 
   <script src="js/products.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-    window.renderPage = function () {
-      const byTag = t => PRODUCTS.filter(p => p.tag === t);
-      const best = byTag("Best Seller").slice(0, 4);
-      const news = byTag("New Arrival").slice(0, 8);
-      const coming = [
-        "Strange Heavens Out Of The Blue","Wild Vetiver","Promise","Basso","Torino 21"
-      ].map(n => PRODUCTS.find(p => p.name === n)).filter(Boolean)
-       .map(p => ({ ...p, tag: "Coming Soon" }));
-
-      document.getElementById("bestGrid").innerHTML =
-        (best.length ? best : PRODUCTS.slice(0,4)).map(p => cardHtml({ ...p, tag: "Best Seller" })).join("");
-      document.getElementById("newGrid").innerHTML =
-        (news.length ? news : PRODUCTS.slice(4,12)).map(p => cardHtml({ ...p, tag: "New Arrival" })).join("");
-      document.getElementById("comingGrid").innerHTML =
-        coming.map(p => cardHtml(p)).join("");
-
-      // brands: 12 featured
-      const featured = ["AMOUAGE","BOADICEA THE VICTORIOUS","BORTNIKOFF","by Kilian","Byredo","CHANEL","CLIVE CHRISTIAN","DIPTYQUE","FREDERIC MALLE","Guerlain","XERJOFF","Yves Saint Laurent"];
-      const brandCards = featured.map(name => {
-        const b = BRANDS.find(x => x.name === name) || { name, count: 0 };
-        const initials = name.split(/\s+/).slice(0,2).map(w => w[0]).join("").toUpperCase();
-        return `<a class="brand-card" href="shop.html" data-reveal>
-          <span class="initials">${initials}</span>
-          <h3>${b.name}</h3>
-          <small>${b.count} scents</small>
-        </a>`;
-      }).join("");
-      document.getElementById("brandGrid").innerHTML = brandCards;
-
-      bindWish();
-      swReveal();
-    };
-  </script>
+  <script src="js/home.js"></script>
 </body>
 </html>
