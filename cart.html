@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart — Mood Perfume</title>
+  <meta name="description" content="Review the fragrances in your Mood Perfume cart before checkout.">
+  <meta name="theme-color" content="#000000">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { brand: { bg: '#000000', dark: '#0a0a0a', accent: '#ffffff', text: '#cfcfcf', card: 'rgba(255,255,255,0.04)' } },
+      fontFamily: { serif: ['"Playfair Display"','serif'], sans: ['Poppins','sans-serif'] } } } };
+  </script>
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="apple-touch-icon" href="img/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mood Perfume">
+  <meta property="og:title" content="Your Cart — Mood Perfume">
+  <meta property="og:description" content="Review the fragrances in your Mood Perfume cart before checkout.">
+  <meta property="og:image" content="img/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Your Cart — Mood Perfume">
+  <meta name="twitter:description" content="Review the fragrances in your Mood Perfume cart before checkout.">
+  <meta name="twitter:image" content="img/logo.png">
+  <style>/* Prevent first-load header flash: keep the JS-injected header hidden until Tailwind
+     (Play CDN) has JIT-compiled its classes, then fade in. Independent of Tailwind. See revealHeader() in js/layout.js. */
+    #site-header{opacity:0}
+    #site-header.header-ready{opacity:1;transition:opacity .12s ease-out}</style>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body class="font-sans bg-brand-dark text-brand-text/90" data-page="brands" data-init="cart">
+  <div id="site-header"></div>
+
+  <main class="px-4 sm:px-6 lg:px-8 overflow-x-hidden min-h-[70vh]">
+    <section class="pt-36 md:pt-44 pb-24 max-w-5xl mx-auto">
+      <h1 class="font-serif text-4xl md:text-6xl font-bold text-brand-accent mb-10">Your Cart</h1>
+      <div id="cartPage" class="grid lg:grid-cols-[1fr_340px] gap-10 items-start"></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/products.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/product.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/layout.js"></script>
+</body>
+</html>

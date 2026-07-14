@@ -1,0 +1,96 @@
+/* =========================================================================
+   MOOD PERFUME — shared custom CSS (complements Tailwind CDN utility classes)
+   ========================================================================= */
+html { scroll-behavior: smooth; }
+body { background: #0a0a0a; color: rgba(207,207,207,.9); font-family: Poppins, sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+::selection { background: #ffffff; color: #0a0a0a; }
+
+/* frosted product-card surface (live `.glass`) */
+.glass { background: rgba(255,255,255,.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+/* ---------- local-image placeholder ----------
+   Swapped in by MP.imageFallback() when a file under img/ is missing, so the
+   layout holds its shape and the page never reaches for a remote CDN. */
+.img-ph { display: grid; place-items: center; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06); color: rgba(255,255,255,.22); min-width: 2rem; min-height: 2rem; }
+.img-ph i { font-size: clamp(1rem, 12%, 2.5rem); }
+
+/* wishlist heart on cards */
+.wish-btn.is-wished { color: #ef4444; border-color: rgba(239,68,68,.4); background: rgba(239,68,68,.12); }
+.wish-btn.is-wished i { font-weight: 900; }
+
+/* scroll parallax background layer (live: h-120% + translateY(top*.3)) */
+.parallax-bg { position: absolute; inset: 0; height: 120%; background-repeat: no-repeat; background-position: center; background-size: cover; will-change: transform; }
+
+/* dual-handle price range slider */
+.price-slider .range-input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; background: transparent; pointer-events: none; -webkit-appearance: none; appearance: none; }
+.price-slider .range-input::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; pointer-events: auto; width: 18px; height: 18px; border-radius: 50%; background: #ffffff; border: 2px solid #0a0a0a; box-shadow: 0 2px 8px rgba(0,0,0,.5); cursor: pointer; margin-top: 0; }
+.price-slider .range-input::-moz-range-thumb { pointer-events: auto; width: 18px; height: 18px; border-radius: 50%; background: #ffffff; border: 2px solid #0a0a0a; box-shadow: 0 2px 8px rgba(0,0,0,.5); cursor: pointer; }
+.price-slider .range-input::-webkit-slider-runnable-track { background: transparent; }
+.price-slider .range-input::-moz-range-track { background: transparent; }
+.price-slider .range-input:focus { outline: none; }
+
+/* sort <select> popup — restyle the native option list to match the dark theme.
+   Works in Chromium (Chrome/Edge) and Firefox; Safari renders the open popup as
+   OS-level UI and ignores most of this (accepted demo-site limitation). Scoped to
+   #sortSel so a future <select> isn't silently restyled. The box-shadow inset forces
+   the highlighted-row fill in Firefox, which otherwise keeps its system blue. */
+#sortSel, #sortSel option { background-color: #0a0a0a; color: #ffffff; }
+#sortSel option:checked, #sortSel option:hover { background-color: rgba(255,255,255,.1); color: #ffffff; box-shadow: 0 0 10px 100px rgba(255,255,255,.1) inset; }
+
+/* live keyframes */
+@keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+.animate-slide-up { animation: slideUp .8s cubic-bezier(.22,1,.36,1) forwards; }
+@keyframes flash { 0%,100% { opacity: 1; } 50% { opacity: .2; } }
+.animate-flash { animation: flash 1s ease-in-out infinite; }
+@keyframes textFlash { 0%,100% { opacity: 1; } 50% { opacity: .5; } }
+.animate-text-flash { animation: textFlash 1.5s ease-in-out infinite; }
+@keyframes pulseGlow { 0%,100% { opacity: .4; } 50% { opacity: .8; } }
+.animate-pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+
+/* scroll reveal */
+.scroll-animate { opacity: 0; transform: translateY(40px); transition: opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); }
+.scroll-animate.visible { opacity: 1; transform: none; }
+
+/* marquee (new arrivals + scent inspirations) */
+.marquee-track { display: flex; width: max-content; animation: marquee var(--dur,45s) linear infinite; }
+.marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* hide scrollbars on horizontal carousels */
+.no-sb::-webkit-scrollbar { display: none; }
+.no-sb { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* gold thin scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: linear-gradient(#ffffff,#000000); border-radius: 20px; }
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ---------- page transitions ---------- */
+/* first-load fade */
+.page-fade-in { animation: pageIn .5s cubic-bezier(.22,1,.36,1) both; }
+@keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* SPA content swap: fade the outgoing <main> out, the incoming <main> in
+   (clones the live site's seamless route change — header/footer stay put) */
+main.spa-leave { opacity: 0; transform: translateY(6px); transition: opacity .18s ease, transform .18s ease; }
+main.spa-enter { opacity: 0; transform: translateY(14px); }
+main.spa-enter-active { opacity: 1; transform: none; transition: opacity .5s cubic-bezier(.22,1,.36,1), transform .5s cubic-bezier(.22,1,.36,1); }
+
+/* Native cross-document View Transitions (Chrome) */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: vtOut .28s ease both; }
+::view-transition-new(root) { animation: vtIn .40s cubic-bezier(.22,1,.36,1) both; }
+@keyframes vtOut { to { opacity: 0; transform: translateY(-6px); } }
+@keyframes vtIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  .scroll-animate { opacity: 1 !important; transform: none !important; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
+}

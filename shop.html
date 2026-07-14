@@ -3,105 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop All Fragrances — Sole Whiff</title>
-  <meta name="description" content="Explore 240+ niche fragrances from 70+ prestigious houses. Filter by best sellers, new arrivals and more.">
-  <meta name="theme-color" content="#1D4648">
+  <title>Shop All Fragrances — Mood Perfume</title>
+  <meta name="description" content="Explore 19 niche fragrances from 19 prestigious houses. Filter by best sellers, new arrivals and more.">
+  <meta name="theme-color" content="#000000">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://cdn.shopify.com">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { brand: { bg: '#000000', dark: '#0a0a0a', accent: '#ffffff', text: '#cfcfcf', card: 'rgba(255,255,255,0.04)' } },
+      fontFamily: { serif: ['"Playfair Display"','serif'], sans: ['Poppins','sans-serif'] } } } };
+  </script>
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="apple-touch-icon" href="img/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mood Perfume">
+  <meta property="og:title" content="Shop All Fragrances — Mood Perfume">
+  <meta property="og:description" content="Explore 19 niche fragrances from 19 prestigious houses. Filter by best sellers, new arrivals and more.">
+  <meta property="og:image" content="img/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shop All Fragrances — Mood Perfume">
+  <meta name="twitter:description" content="Explore 19 niche fragrances from 19 prestigious houses. Filter by best sellers, new arrivals and more.">
+  <meta name="twitter:image" content="img/logo.png">
+  <style>/* Prevent first-load header flash: keep the JS-injected header hidden until Tailwind
+     (Play CDN) has JIT-compiled its classes, then fade in. Independent of Tailwind. See revealHeader() in js/layout.js. */
+    #site-header{opacity:0}
+    #site-header.header-ready{opacity:1;transition:opacity .12s ease-out}</style>
+  <link rel="stylesheet" href="css/app.css">
 </head>
-<body data-page="brands">
+
+<body class="font-sans bg-brand-dark text-brand-text/90" data-page="brands" data-init="shop">
   <div id="site-header"></div>
 
-  <main>
-    <section class="page-hero">
-      <div class="container">
-        <div class="breadcrumb"><a href="index.html">Home</a> / Shop</div>
-        <h1 class="gold-text">Explore All Products</h1>
-        <p>A curated house of the world's finest niche fragrances — available as full bottles and precise decants.</p>
+  <main class="px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+    <!-- page hero -->
+    <section class="pt-40 md:pt-52 pb-14 text-center relative -mx-4 sm:-mx-6 lg:-mx-8 overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-accent/10 rounded-full blur-[140px] pointer-events-none"></div>
+      <div class="relative">
+        <p class="text-brand-text/50 text-xs uppercase tracking-[0.3em] mb-4"><a href="index.html" class="hover:text-brand-accent">Home</a> / Shop</p>
+        <h1 class="text-5xl md:text-7xl font-serif font-bold text-brand-accent mb-4">Explore All Products</h1>
+        <p class="text-lg text-brand-text/80 max-w-2xl mx-auto">A curated house of the world's finest niche fragrances — available as full bottles and precise decants.</p>
       </div>
     </section>
 
-    <section class="shop-layout">
-      <div class="container">
-        <div class="shop-toolbar">
-          <div class="filter-pills" id="filterPills">
-            <button class="pill active" data-filter="all">All Products</button>
-            <button class="pill" data-filter="best">Best Sellers</button>
-            <button class="pill" data-filter="new">New Arrivals</button>
-            <button class="pill" data-filter="coming">Coming Soon</button>
+    <section class="pb-24 max-w-[1400px] mx-auto">
+      <!-- toolbar -->
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 mb-12">
+        <div id="filterPills" class="flex flex-wrap gap-3">
+          <button class="pill px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.15em] border border-brand-accent/30 transition-all duration-300" data-filter="all">All Products</button>
+          <button class="pill px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.15em] border border-brand-accent/30 transition-all duration-300" data-filter="best">Best Sellers</button>
+          <button class="pill px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.15em] border border-brand-accent/30 transition-all duration-300" data-filter="new">New Arrivals</button>
+          <button class="pill px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.15em] border border-brand-accent/30 transition-all duration-300" data-filter="coming">Coming Soon</button>
+        </div>
+        <div class="flex items-center gap-4">
+          <!-- filter drawer trigger -->
+          <button id="filterBtn" class="relative inline-flex items-center gap-2.5 bg-black/20 border border-brand-accent/20 text-brand-text rounded-full px-5 py-2.5 hover:border-brand-accent transition-all" aria-haspopup="dialog" aria-controls="filterDrawer">
+            <i class="fas fa-sliders text-brand-accent text-xs"></i>
+            <span class="text-xs uppercase tracking-[0.15em]">Filter</span>
+            <span id="filterBadge" class="hidden min-w-[18px] h-[18px] px-1 rounded-full bg-brand-accent text-brand-bg text-[10px] font-bold place-items-center">0</span>
+          </button>
+          <select id="sortSel" class="bg-black/20 border border-brand-accent/20 text-brand-text text-sm rounded-full px-4 py-2.5 focus:outline-none focus:border-brand-accent" aria-label="Sort products">
+            <option value="feat">Featured</option>
+            <option value="az">Name: A–Z</option>
+            <option value="lo">Price: Low to High</option>
+            <option value="hi">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <p id="shopCount" class="text-sm text-brand-text/60 mb-6"></p>
+      <div id="shopGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"></div>
+
+      <div class="text-center mt-16">
+        <button id="loadMore" class="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-serif font-bold text-white transition-all duration-300 bg-transparent border border-brand-accent/30 rounded-full hover:bg-brand-accent/10 hover:border-brand-accent hover:shadow-[0_0_30px_rgba(240,210,160,0.2)]">
+          <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-brand-accent rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+          <span class="relative flex items-center gap-3 tracking-widest uppercase text-xs">Load More<i class="fas fa-arrow-down transition-transform group-hover:translate-y-1"></i></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- filter drawer (mirrors the mobile nav drawer pattern in js/layout.js) -->
+    <div id="filterDrawerBd" class="fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm opacity-0 invisible transition-all duration-400"></div>
+    <aside id="filterDrawer" class="fixed top-0 right-0 z-[120] h-[100dvh] w-[84vw] max-w-sm bg-brand-dark border-l border-brand-accent/20 p-6 translate-x-full transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] flex flex-col" role="dialog" aria-modal="true" aria-label="Filters">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="font-serif text-2xl text-brand-accent">Filters</h2>
+        <button id="filterDrawerClose" class="w-10 h-10 grid place-items-center rounded-full text-brand-accent hover:bg-white/5" aria-label="Close filters"><i class="fas fa-xmark text-lg"></i></button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto -mr-3 pr-3">
+        <!-- price range -->
+        <div class="mb-8">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] uppercase tracking-[0.2em] text-brand-text/60">Price Range</span>
+            <span id="priceLabel" class="text-xs text-brand-accent tabular-nums">—</span>
           </div>
-          <div style="display:flex;gap:1rem;align-items:center">
-            <span class="shop-count" id="shopCount"></span>
-            <select class="shop-select" id="sortSel" aria-label="Sort products">
-              <option value="feat">Featured</option>
-              <option value="az">Name: A–Z</option>
-              <option value="lo">Price: Low to High</option>
-              <option value="hi">Price: High to Low</option>
-            </select>
+          <div id="priceSlider" class="price-slider relative h-5 select-none">
+            <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1 rounded-full bg-white/15"></div>
+            <div id="priceFill" class="absolute top-1/2 -translate-y-1/2 h-1 rounded-full bg-brand-accent"></div>
+            <input id="priceMin" type="range" class="range-input" aria-label="Minimum price">
+            <input id="priceMax" type="range" class="range-input" aria-label="Maximum price">
           </div>
         </div>
 
-        <div class="grid" id="shopGrid"></div>
-        <div class="load-more">
-          <button class="btn" id="loadMore">Load More <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button>
+        <!-- brands -->
+        <div>
+          <span class="text-[11px] uppercase tracking-[0.2em] text-brand-text/60 block mb-3">Brands</span>
+          <div id="brandList" class="flex flex-col"></div>
         </div>
       </div>
-    </section>
+
+      <div class="pt-5 mt-4 border-t border-brand-accent/10 flex items-center justify-between">
+        <button id="clearFilters" class="text-xs uppercase tracking-[0.15em] text-brand-text/60 hover:text-brand-accent transition-colors">Clear all</button>
+        <span id="filterResultCount" class="text-xs text-brand-text/50"></span>
+      </div>
+    </aside>
   </main>
 
   <div id="site-footer"></div>
 
   <script src="js/products.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-    window.renderPage = function () {
-      const grid = document.getElementById("shopGrid");
-      const countEl = document.getElementById("shopCount");
-      const loadBtn = document.getElementById("loadMore");
-      const PAGE = 16;
-      let filter = new URLSearchParams(location.search).get("f") || "all";
-      let sort = "feat";
-      let shown = PAGE;
-
-      const tagFor = { best: "Best Seller", new: "New Arrival", coming: "Coming Soon" };
-
-      function list() {
-        let items = PRODUCTS.slice();
-        if (filter !== "all") items = items.filter(p => p.tag === tagFor[filter]);
-        if (sort === "az") items.sort((a, b) => a.name.localeCompare(b.name));
-        else if (sort === "lo") items.sort((a, b) => (a.low ?? 1e9) - (b.low ?? 1e9));
-        else if (sort === "hi") items.sort((a, b) => (b.high ?? 0) - (a.high ?? 0));
-        return items;
-      }
-
-      function draw() {
-        const items = list();
-        const slice = items.slice(0, shown);
-        grid.innerHTML = slice.map(p => cardHtml(p)).join("");
-        countEl.textContent = items.length + " product(s) found";
-        loadBtn.parentElement.style.display = shown >= items.length ? "none" : "block";
-        bindWish(grid);
-        swReveal();
-      }
-
-      // set active pill from query
-      document.querySelectorAll("#filterPills .pill").forEach(b => {
-        b.classList.toggle("active", b.dataset.filter === filter);
-        b.addEventListener("click", () => {
-          document.querySelector("#filterPills .active")?.classList.remove("active");
-          b.classList.add("active");
-          filter = b.dataset.filter; shown = PAGE; draw();
-          window.scrollTo({ top: document.querySelector(".shop-layout").offsetTop - 90, behavior: "smooth" });
-        });
-      });
-      document.getElementById("sortSel").addEventListener("change", e => { sort = e.target.value; shown = PAGE; draw(); });
-      loadBtn.addEventListener("click", () => { shown += PAGE; draw(); });
-
-      draw();
-    };
-  </script>
+  <script src="js/components.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/product.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/layout.js"></script>
 </body>
 </html>

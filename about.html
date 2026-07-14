@@ -3,98 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us — Sole Whiff</title>
-  <meta name="description" content="At Sole Whiff, perfume is more than a scent — it's an extension of your identity. Discover our story.">
-  <meta name="theme-color" content="#1D4648">
+  <title>About Us — Mood Perfume</title>
+  <meta name="description" content="At Mood Perfume, perfume is more than a scent — it's an extension of your identity. Discover our story.">
+  <meta name="theme-color" content="#000000">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://cdn.shopify.com">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { brand: { bg: '#000000', dark: '#0a0a0a', accent: '#ffffff', text: '#cfcfcf', card: 'rgba(255,255,255,0.04)' } },
+      fontFamily: { serif: ['"Playfair Display"','serif'], sans: ['Poppins','sans-serif'] } } } };
+  </script>
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="apple-touch-icon" href="img/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mood Perfume">
+  <meta property="og:title" content="About Us — Mood Perfume">
+  <meta property="og:description" content="At Mood Perfume, perfume is more than a scent — it's an extension of your identity. Discover our story.">
+  <meta property="og:image" content="img/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Us — Mood Perfume">
+  <meta name="twitter:description" content="At Mood Perfume, perfume is more than a scent — it's an extension of your identity. Discover our story.">
+  <meta name="twitter:image" content="img/logo.png">
+  <style>/* Prevent first-load header flash: keep the JS-injected header hidden until Tailwind
+     (Play CDN) has JIT-compiled its classes, then fade in. Independent of Tailwind. See revealHeader() in js/layout.js. */
+    #site-header{opacity:0}
+    #site-header.header-ready{opacity:1;transition:opacity .12s ease-out}</style>
+  <link rel="stylesheet" href="css/app.css">
 </head>
-<body data-page="about">
+
+<body class="font-sans bg-brand-dark text-brand-text/90" data-page="about" data-init="about">
   <div id="site-header"></div>
 
-  <main>
-    <section class="page-hero">
-      <div class="container">
-        <div class="breadcrumb"><a href="index.html">Home</a> / About Us</div>
-        <h1 class="gold-text">About Sole Whiff</h1>
-        <p>An unparalleled olfactory journey, built on elegance, quality and personalized service.</p>
+  <main class="px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+    <!-- page hero -->
+    <section class="pt-40 md:pt-52 pb-14 text-center relative -mx-4 sm:-mx-6 lg:-mx-8 overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-accent/10 rounded-full blur-[140px] pointer-events-none"></div>
+      <div class="relative">
+        <p class="text-brand-text/50 text-xs uppercase tracking-[0.3em] mb-4"><a href="index.html" class="hover:text-brand-accent">Home</a> / About Us</p>
+        <h1 class="text-5xl md:text-7xl font-serif font-bold text-brand-accent mb-4">About Mood Perfume</h1>
+        <p class="text-lg text-brand-text/80 max-w-2xl mx-auto">An unparalleled olfactory journey, built on elegance, quality and personalized service.</p>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container prose" data-reveal>
-        <p>At Sole Whiff, we believe perfume is more than just a scent — it's an extension of your identity. We curate an exclusive collection of high-end fragrances and offer expert decanting services, allowing you to explore the world's most luxurious aromas without commitment. Our passion lies in helping you discover a fragrance that truly resonates with your unique spirit and style.</p>
-        <p>Founded on principles of elegance, quality and personalized service, Sole Whiff is your gateway to an unparalleled olfactory journey. We partner with prestigious houses and emerging artisan perfumers to bring you a selection that is both diverse and impeccably refined.</p>
-      </div>
+    <!-- story -->
+    <section class="py-14 max-w-3xl mx-auto scroll-animate">
+      <p class="text-lg text-brand-text/80 leading-relaxed mb-6"><span class="float-left font-serif text-6xl leading-[.8] pr-3 pt-1 text-brand-accent">A</span>t Mood Perfume, we believe perfume is more than just a scent — it's an extension of your identity. We curate an exclusive collection of high-end fragrances and offer expert decanting services, allowing you to explore the world's most luxurious aromas without commitment. Our passion lies in helping you discover a fragrance that truly resonates with your unique spirit and style.</p>
+      <p class="text-lg text-brand-text/80 leading-relaxed">Founded on principles of elegance, quality and personalized service, Mood Perfume is your gateway to an unparalleled olfactory journey. We partner with prestigious houses and emerging artisan perfumers to bring you a selection that is both diverse and impeccably refined.</p>
     </section>
 
     <!-- values -->
-    <section class="section" style="background:var(--bg);border-block:1px solid var(--line);padding-top:0">
-      <div class="container">
-        <div class="tips-grid" style="margin-top:-3rem">
-          <div class="tip-card" data-reveal>
-            <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 3Z"/></svg></div>
-            <h3>100% Authentic</h3>
-            <p>Every drop is sourced from prestigious houses and decanted with sterile precision — an authentic sample of the original masterpiece.</p>
-          </div>
-          <div class="tip-card" data-reveal>
-            <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div>
-            <h3>Curated Selection</h3>
-            <p>From heritage maisons to rare artisan perfumers, our 70+ brands are chosen for character, quality and craftsmanship.</p>
-          </div>
-          <div class="tip-card" data-reveal>
-            <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 13l1.5-6h13L20 13M4 13h16M4 13v5h16v-5M8 18v2M16 18v2"/></svg></div>
-            <h3>Fast Delivery</h3>
-            <p>Based in Aqaba with fast delivery to Amman and every city across Jordan, so your scent journey begins without delay.</p>
-          </div>
+    <section class="py-16 max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="scroll-animate p-8 rounded-2xl bg-black/20 border border-white/5 hover:border-brand-accent transition-all duration-500 hover:-translate-y-1">
+          <div class="w-14 h-14 grid place-items-center rounded-full border border-brand-accent/40 text-brand-accent text-xl mb-6"><i class="fas fa-gem"></i></div>
+          <h3 class="font-serif text-2xl text-white mb-3">100% Authentic</h3>
+          <p class="text-brand-text/70">Every drop is sourced from prestigious houses and decanted with sterile precision — an authentic sample of the original masterpiece.</p>
+        </div>
+        <div class="scroll-animate p-8 rounded-2xl bg-black/20 border border-white/5 hover:border-brand-accent transition-all duration-500 hover:-translate-y-1">
+          <div class="w-14 h-14 grid place-items-center rounded-full border border-brand-accent/40 text-brand-accent text-xl mb-6"><i class="fas fa-wand-magic-sparkles"></i></div>
+          <h3 class="font-serif text-2xl text-white mb-3">Curated Selection</h3>
+          <p class="text-brand-text/70">From heritage maisons to rare artisan perfumers, our 19 brands are chosen for character, quality and craftsmanship.</p>
+        </div>
+        <div class="scroll-animate p-8 rounded-2xl bg-black/20 border border-white/5 hover:border-brand-accent transition-all duration-500 hover:-translate-y-1">
+          <div class="w-14 h-14 grid place-items-center rounded-full border border-brand-accent/40 text-brand-accent text-xl mb-6"><i class="fas fa-truck-fast"></i></div>
+          <h3 class="font-serif text-2xl text-white mb-3">Fast Delivery</h3>
+          <p class="text-brand-text/70">Fast delivery to Amman and every city across Jordan, so your scent journey begins without delay.</p>
         </div>
       </div>
     </section>
 
     <!-- gallery -->
-    <section class="section">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <span class="eyebrow center">Scent Inspirations</span>
-          <h2 class="gold-text">A Glimpse Into Our World</h2>
-        </div>
-        <div class="about-gallery stagger" data-reveal id="aboutGallery"></div>
+    <section class="py-16 max-w-6xl mx-auto">
+      <div class="text-center mb-12 scroll-animate">
+        <span class="text-brand-accent text-xs font-black uppercase tracking-[0.5em] mb-4 block">Scent Inspirations</span>
+        <h2 class="text-4xl md:text-5xl font-serif font-bold text-white">A Glimpse Into Our World</h2>
       </div>
+      <div id="aboutGallery" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
     </section>
 
-    <section class="request">
-      <div class="container" data-reveal>
-        <span class="eyebrow center">Perfume Hunters</span>
-        <h2 class="gold-text">Ready to find your signature?</h2>
-        <p>Let our perfume hunters track down your desired fragrance, or explore the collection yourself.</p>
-        <a href="shop.html" class="btn btn-solid">Explore Collection <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
+    <!-- CTA -->
+    <section class="py-20 text-center scroll-animate">
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-accent mb-6">Ready to find your signature?</h2>
+      <p class="text-lg text-brand-text/80 max-w-xl mx-auto mb-10">Let our perfume hunters track down your desired fragrance, or explore the collection yourself.</p>
+      <a href="shop.html" class="group inline-flex items-center gap-3 px-10 py-5 bg-transparent border-2 border-brand-accent/30 text-brand-accent font-bold rounded-full transition-all duration-500 hover:border-brand-accent hover:bg-brand-accent/10 hover:-translate-y-1">Explore Collection<i class="fas fa-arrow-right-long transition-transform group-hover:translate-x-2"></i></a>
     </section>
   </main>
 
   <div id="site-footer"></div>
 
   <script src="js/products.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-    window.renderPage = function () {
-      const g = [
-        "69e0b641-daf1-442a-b6cd-a15c62d70af5_800x.jpg?v=1761563976",
-        "WhatsApp_Image_2025-10-28_at_08.48.45_1_800x.jpg?v=1761630734",
-        "WhatsApp_Image_2025-10-28_at_08.48.45_2_800x.jpg?v=1761630735",
-        "WhatsApp_Image_2025-10-28_at_08.48.45_3_800x.jpg?v=1761630735",
-        "WhatsApp_Image_2025-10-28_at_08.48.45_800x.jpg?v=1761630734",
-        "WhatsApp_Image_2025-10-28_at_08.48.46_1_800x.jpg?v=1761630734",
-        "WhatsApp_Image_2025-10-28_at_08.48.46_2_800x.jpg?v=1761630734",
-        "decant11.png?v=1769890976"
-      ];
-      document.getElementById("aboutGallery").innerHTML = g.map(f =>
-        `<img src="https://cdn.shopify.com/s/files/1/0979/7206/0241/files/${f}&width=500" alt="Scent inspiration" loading="lazy">`).join("");
-      swReveal();
-    };
-  </script>
+  <script src="js/components.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/product.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/layout.js"></script>
 </body>
 </html>

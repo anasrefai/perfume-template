@@ -3,80 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Art of Fragrance — Tips — Sole Whiff</title>
+  <title>The Art of Fragrance — Tips — Mood Perfume</title>
   <meta name="description" content="Expert advice on how to apply and store your perfumes for the longest-lasting, truest scent.">
-  <meta name="theme-color" content="#1D4648">
+  <meta name="theme-color" content="#000000">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { brand: { bg: '#000000', dark: '#0a0a0a', accent: '#ffffff', text: '#cfcfcf', card: 'rgba(255,255,255,0.04)' } },
+      fontFamily: { serif: ['"Playfair Display"','serif'], sans: ['Poppins','sans-serif'] } } } };
+  </script>
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="apple-touch-icon" href="img/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mood Perfume">
+  <meta property="og:title" content="The Art of Fragrance — Tips — Mood Perfume">
+  <meta property="og:description" content="Expert advice on how to apply and store your perfumes for the longest-lasting, truest scent.">
+  <meta property="og:image" content="img/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Art of Fragrance — Tips — Mood Perfume">
+  <meta name="twitter:description" content="Expert advice on how to apply and store your perfumes for the longest-lasting, truest scent.">
+  <meta name="twitter:image" content="img/logo.png">
+  <style>/* Prevent first-load header flash: keep the JS-injected header hidden until Tailwind
+     (Play CDN) has JIT-compiled its classes, then fade in. Independent of Tailwind. See revealHeader() in js/layout.js. */
+    #site-header{opacity:0}
+    #site-header.header-ready{opacity:1;transition:opacity .12s ease-out}</style>
+  <link rel="stylesheet" href="css/app.css">
 </head>
-<body data-page="tips">
+
+<body class="font-sans bg-brand-dark text-brand-text/90" data-page="tips" data-init="tips">
   <div id="site-header"></div>
 
-  <main>
-    <section class="page-hero">
-      <div class="container">
-        <div class="breadcrumb"><a href="index.html">Home</a> / Tips</div>
-        <h1 class="gold-text">The Art of Fragrance</h1>
-        <p>Unlock the full potential of your perfumes with our expert advice.</p>
+  <main class="px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+    <section class="pt-40 md:pt-52 pb-14 text-center relative -mx-4 sm:-mx-6 lg:-mx-8 overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-accent/10 rounded-full blur-[140px] pointer-events-none"></div>
+      <div class="relative">
+        <p class="text-brand-text/50 text-xs uppercase tracking-[0.3em] mb-4"><a href="index.html" class="hover:text-brand-accent">Home</a> / Tips</p>
+        <h1 class="text-5xl md:text-7xl font-serif font-bold text-brand-accent mb-4">The Art of Fragrance</h1>
+        <p class="text-lg text-brand-text/80 max-w-2xl mx-auto">Unlock the full potential of your perfumes with our expert advice.</p>
       </div>
     </section>
 
-    <section class="section" style="padding-top:clamp(2rem,5vw,4rem)">
-      <div class="container">
-        <h2 class="tips-group-title gold-text" data-reveal>How to Apply Perfume</h2>
-        <div class="tips-grid">
-          <div class="tip-card" data-reveal>
-            <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div>
-            <h3>Apply to Pulse Points</h3>
-            <p>For a longer-lasting scent, apply to areas where your veins are close to the skin — the wrists, neck, behind the ears, and inside the elbows.</p>
-          </div>
-          <div class="tip-card" data-reveal>
-            <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6Z"/><path d="M4 4l16 16"/></svg></div>
-            <h3>Don't Rub, Just Dab</h3>
-            <p>Resist the urge to rub your wrists together. Rubbing breaks down fragrance molecules and can alter the scent. Gently dab or let it air dry.</p>
-          </div>
-          <div class="tip-card" data-reveal>
-            <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c3 4 5 6.5 5 9a5 5 0 0 1-10 0c0-2.5 2-5 5-9Z"/></svg></div>
-            <h3>Moisturize First</h3>
-            <p>Perfume lasts longer on hydrated skin. Apply an unscented lotion before you spritz to give the fragrance something to cling to.</p>
-          </div>
+    <section class="py-10 max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-white text-center mb-12 scroll-animate">How to <span class="text-brand-accent italic font-light">Apply</span> Perfume</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="scroll-animate p-8 rounded-2xl bg-black/20 border border-white/5 hover:border-brand-accent transition-all duration-500 hover:-translate-y-1">
+          <div class="w-14 h-14 grid place-items-center rounded-full border border-brand-accent/40 text-brand-accent text-xl mb-6"><i class="fas fa-hand-sparkles"></i></div>
+          <h3 class="font-serif text-2xl text-white mb-3">Apply to Pulse Points</h3>
+          <p class="text-brand-text/70">For a longer-lasting scent, apply to areas where your veins are close to the skin — the wrists, neck, behind the ears, and inside the elbows.</p>
         </div>
-
-        <h2 class="tips-group-title gold-text" data-reveal>How to Store Your Fragrance</h2>
-        <div class="tips-grid">
-          <div class="tip-card" data-reveal>
-            <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3v2M5 8l1.5 1M19 8l-1.5 1M4 14h16M6 14v6h12v-6"/></svg></div>
-            <h3>Keep it Cool and Dark</h3>
-            <p>Heat, light and humidity break down perfume. Store fragrances in a cool, dark, dry place — like a drawer — away from direct sunlight.</p>
-          </div>
-          <div class="tip-card" data-reveal>
-            <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 3h6v4l2 3v10H7V10l2-3V3Z"/></svg></div>
-            <h3>Avoid Shaking the Bottle</h3>
-            <p>Shaking introduces air bubbles which can accelerate oxidation and spoil the fragrance over time. Handle your bottles gently.</p>
-          </div>
-          <div class="tip-card" data-reveal>
-            <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8l9-5 9 5-9 5-9-5Z"/><path d="M3 8v8l9 5 9-5V8"/></svg></div>
-            <h3>Keep the Original Box</h3>
-            <p>The original packaging is designed to protect the bottle from light, providing an extra layer of protection for your investment.</p>
-          </div>
+        <div class="scroll-animate p-8 rounded-2xl bg-black/20 border border-white/5 hover:border-brand-accent transition-all duration-500 hover:-translate-y-1">
+          <div class="w-14 h-14 grid place-items-center rounded-full border border-brand-accent/40 text-brand-accent text-xl mb-6"><i class="fas fa-ban"></i></div>
+          <h3 class="font-serif text-2xl text-white mb-3">Don't Rub, Just Dab</h3>
+          <p class="text-brand-text/70">Resist the urge to rub your wrists together. Rubbing breaks down fragrance molecules and can alter the scent. Gently dab or let it air dry.</p>
+        </div>
+        <div class="scroll-animate p-8 rounded-2xl bg-black/20 border border-white/5 hover:border-brand-accent transition-all duration-500 hover:-translate-y-1">
+          <div class="w-14 h-14 grid place-items-center rounded-full border border-brand-accent/40 text-brand-accent text-xl mb-6"><i class="fas fa-droplet"></i></div>
+          <h3 class="font-serif text-2xl text-white mb-3">Moisturize First</h3>
+          <p class="text-brand-text/70">Perfume lasts longer on hydrated skin. Apply an unscented lotion before you spritz to give the fragrance something to cling to.</p>
         </div>
       </div>
     </section>
 
-    <section class="request">
-      <div class="container" data-reveal>
-        <span class="eyebrow center">Explore</span>
-        <h2 class="gold-text">Put these tips to good use</h2>
-        <p>Discover a fragrance worth caring for from our collection of 240+ niche scents.</p>
-        <a href="shop.html" class="btn btn-solid">Shop Fragrances <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <section class="py-10 max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-white text-center mb-12 scroll-animate">How to <span class="text-brand-accent italic font-light">Store</span> Your Fragrance</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="scroll-animate p-8 rounded-2xl bg-black/20 border border-white/5 hover:border-brand-accent transition-all duration-500 hover:-translate-y-1">
+          <div class="w-14 h-14 grid place-items-center rounded-full border border-brand-accent/40 text-brand-accent text-xl mb-6"><i class="fas fa-temperature-low"></i></div>
+          <h3 class="font-serif text-2xl text-white mb-3">Keep it Cool and Dark</h3>
+          <p class="text-brand-text/70">Heat, light and humidity break down perfume. Store fragrances in a cool, dark, dry place — like a drawer — away from direct sunlight.</p>
+        </div>
+        <div class="scroll-animate p-8 rounded-2xl bg-black/20 border border-white/5 hover:border-brand-accent transition-all duration-500 hover:-translate-y-1">
+          <div class="w-14 h-14 grid place-items-center rounded-full border border-brand-accent/40 text-brand-accent text-xl mb-6"><i class="fas fa-hand-holding-droplet"></i></div>
+          <h3 class="font-serif text-2xl text-white mb-3">Avoid Shaking the Bottle</h3>
+          <p class="text-brand-text/70">Shaking introduces air bubbles which can accelerate oxidation and spoil the fragrance over time. Handle your bottles gently.</p>
+        </div>
+        <div class="scroll-animate p-8 rounded-2xl bg-black/20 border border-white/5 hover:border-brand-accent transition-all duration-500 hover:-translate-y-1">
+          <div class="w-14 h-14 grid place-items-center rounded-full border border-brand-accent/40 text-brand-accent text-xl mb-6"><i class="fas fa-box-archive"></i></div>
+          <h3 class="font-serif text-2xl text-white mb-3">Keep the Original Box</h3>
+          <p class="text-brand-text/70">The original packaging is designed to protect the bottle from light, providing an extra layer of protection for your investment.</p>
+        </div>
       </div>
+    </section>
+
+    <section class="py-20 text-center scroll-animate">
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-accent mb-6">Put these tips to good use</h2>
+      <p class="text-lg text-brand-text/80 max-w-xl mx-auto mb-10">Discover a fragrance worth caring for from our collection of 19 niche scents.</p>
+      <a href="shop.html" class="group inline-flex items-center gap-3 px-10 py-5 bg-transparent border-2 border-brand-accent/30 text-brand-accent font-bold rounded-full transition-all duration-500 hover:border-brand-accent hover:bg-brand-accent/10 hover:-translate-y-1">Shop Fragrances<i class="fas fa-arrow-right-long transition-transform group-hover:translate-x-2"></i></a>
     </section>
   </main>
 
   <div id="site-footer"></div>
+
   <script src="js/products.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/product.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/layout.js"></script>
 </body>
 </html>
